@@ -5,9 +5,9 @@ const Post = (props) => {
     return (
         <div className={style.item}>
           <img src="https://static.1tv.ru/uploads/photo/image/2/huge/4062_huge_876c41f50e.jpg" alt=""/>
-            {props.name}
+            {props.message}
           <div>
-            <span>{props.likes} likes</span>
+            <span>{props.likesCount} likes</span>
           </div>
         </div>
       );
