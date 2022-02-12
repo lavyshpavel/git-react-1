@@ -3,30 +3,30 @@ import style from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
 
 const DialogItem = (props) => {
-  let path = '/dialogs/' + props.id;
+    let path = '/dialogs/' + props.id;
 
-  return (
-    <div className={style.dialog + ' ' + style.active} >
-      <NavLink to={path}>{props.name}</NavLink>
-    </div>
-  )
+    return (
+        <div className={style.dialog + ' ' + style.active}>
+            <NavLink to={path}>{props.name}</NavLink>
+        </div>
+    )
 }
 
 const Message = (props) => {
-  return (
-    <div className={style.message}>{props.message}</div>
-  )
+    return (
+        <div className={style.message}>{props.message}</div>
+    )
 }
 
 const Dialogs = (props) => {
 
-    let dialogsData = [
+    let dialogs = [
         {id: 1, name: 'Pasha'},
         {id: 2, name: 'Dasha'},
         {id: 3, name: 'Varya'}
     ]
 
-    let messagesData = [
+    let messages = [
         {id: 1, message: 'Hi'},
         {id: 2, message: 'How are you'},
         {id: 3, message: 'Bye'},
@@ -34,21 +34,19 @@ const Dialogs = (props) => {
         {id: 5, message: 'Yo'}
     ]
 
-  return (
-      <div className={style.dialogs}>
-        <div className={style.dialogsItems}>
+    let dialogsElements = dialogs.map((d) => <DialogItem name={d.name} id={d.id}/>);
 
-          <DialogItem name={dialogsData[0].name} id={dialogsData[0].id}/>
-          <DialogItem name={dialogsData[1].name} id={dialogsData[1].id}/>
-          <DialogItem name={dialogsData[2].name} id={dialogsData[2].id}/>
+    let messagesElements = messages.map(m => <Message message={m.message}/>);
 
+    return (
+        <div className={style.dialogs}>
+            <div className={style.dialogsItems}>
+                {dialogsElements}
+            </div>
+            <div className={style.messages}>
+                {messagesElements}
+            </div>
         </div>
-        <div className={style.messages}>
-          <Message message={messagesData[0].message}/>
-          <Message message={messagesData[1].message}/>
-
-        </div>
-      </div>
     )
 }
 
