@@ -3,14 +3,15 @@ import style from './Profile.module.css';
 import MyPosts from './MyPosts/MyPosts.jsx';
 import ProfileInfo from './ProfileInfo/ProfileInfo.jsx';
 
-const Profile = () => {
-    return (
-      <div>
-      <ProfileInfo />
+const Profile = (props) => {
 
-      <MyPosts />
-    </div>
-  );
+    return (
+        <div>
+            <ProfileInfo/>
+
+            <MyPosts posts={props.posts}/>
+        </div>
+    );
 }
 
 export default Profile;
